@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../src';
 import '../assets/index.scss';
+import '../assets/example.scss';
 
 /*
   按钮的一般使用规范及状态

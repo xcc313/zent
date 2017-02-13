@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from '../src';
 import '../assets/index.scss';
+import '../assets/example.scss';
 
 export default class Example extends Component {
   render() {

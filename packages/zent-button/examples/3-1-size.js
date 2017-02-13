@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../src';
 import '../assets/index.scss';
+import '../assets/example.scss';
 
 /*
 *  通过size属性来控制按钮的大小
