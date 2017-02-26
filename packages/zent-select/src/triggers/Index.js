@@ -11,7 +11,6 @@ class Trigger extends Component {
     this.state = {
       open: props.open
     };
-    this.triggerClickHandler = this.triggerClickHandler.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -28,7 +27,7 @@ class Trigger extends Component {
   render() {
     let Node = this.props.trigger;
 
-    return <Node {...this.props} onClick={this.triggerClickHandler} />;
+    return <Node {...this.props} />;
   }
 }
 

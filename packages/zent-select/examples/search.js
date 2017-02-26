@@ -2,9 +2,18 @@ import React, { Component } from 'react';
 import Select from '../src/index';
 import '../assets/index.scss';
 
-const data = [
-  '选项一', '选项二', '选项三'
-];
+const InputTrigger = Select.InputTrigger;
+
+const data = [{
+  id: 1,
+  name: '选项一'
+}, {
+  id: 2,
+  name: '选项二'
+}, {
+  id: 3,
+  name: '选项三'
+}];
 
 export default class Example extends Component {
 
@@ -27,6 +36,9 @@ export default class Example extends Component {
         <Select
           value="选项一"
           data={data}
+          optionValue="id"
+          optionText="name"
+          trigger={InputTrigger}
           searchPlaceholder="请选择其中一项"
           filter={this.filterHandler}
           onEmptySelected={this.emptySelectedHandler}

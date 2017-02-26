@@ -4,9 +4,12 @@
 
 import React, { Component, PropTypes } from 'react';
 import assign from 'object-assign';
+import { Popover } from 'zent';
 import Search from './components/Search';
 import Option from './components/Option';
 import { KEY_EN, KEY_UP, KEY_DOWN } from './constants';
+
+const { withPopover } = Popover;
 
 const isArray = function (o) {
   return Object.prototype.toString.apply(o) === '[object Array]';
@@ -36,7 +39,7 @@ class Popup extends Component {
   }
 
   optionChangedHandler(ev, cid) {
-    this.props.onBlur();
+    this.props.popover.close();
     this.props.onChange(ev, this.props.data.filter(item => item.cid === cid)[0]);
   }
 
@@ -99,9 +102,7 @@ class Popup extends Component {
       prefixCls,
       extraFilter,
       searchPlaceholder,
-      filter,
-      onFocus,
-      onBlur
+      filter
     } = this.props;
 
     let {
@@ -116,7 +117,7 @@ class Popup extends Component {
     this.itemIds = filterData.map(item => item.cid);
 
     return (
-      <div tabIndex="0" className={`${prefixCls}-popup`} onFocus={onFocus} onBlur={onBlur}>
+      <div className={`${prefixCls}-popup`}>
         {!extraFilter && filter && <Search prefixCls={prefixCls} placeholder={searchPlaceholder} onChange={this.searchFilterHandler} />}
         {filterData.map((item) => {
           let currentCls = typeof this.currentId !== 'undefined' && item.cid === this.currentId ? 'current' : '';
@@ -150,9 +151,7 @@ Popup.propTypes = {
   prefixCls: PropTypes.string,
   extraFilter: PropTypes.bool,
   filter: PropTypes.func,
-  onAsyncFilter: PropTypes.func,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func
+  onAsyncFilter: PropTypes.func
 };
 
 Popup.defaultProps = {
@@ -166,4 +165,4 @@ Popup.defaultProps = {
   searchPlaceholder: ''
 };
 
-export default Popup;
+export default withPopover(Popup);

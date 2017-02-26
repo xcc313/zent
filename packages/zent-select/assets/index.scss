@@ -9,7 +9,7 @@ $c-half-black: rgba(0, 0, 0, .2);
 
 .zent-select {
   cursor: pointer;
-  display: inline-block;
+  display: inline-block !important;
   font-size: 12px;
   line-height: 1.5;
   margin-right: 10px;
@@ -30,11 +30,6 @@ $c-half-black: rgba(0, 0, 0, .2);
     .zent-select-simple::after,
     .zent-select-text::after {
       transform: rotate(180deg);
-    }
-
-    .zent-select-popup {
-      height: auto;
-      opacity: 1;
     }
   }
 
@@ -138,16 +133,14 @@ $c-half-black: rgba(0, 0, 0, .2);
 
 .zent-select-popup {
   box-shadow: 0 1px 4px $c-half-black;
-  height: 0;
   left: 0;
-  opacity: 0;
   outline: none;
   overflow-y: auto;
   position: absolute;
   transition: opacity .3s;
   width: 100%;
   z-index: 1;
-  margin-top: 4px;
+  margin-top: 2px;
   background-color: $c-white;
   max-height: 224px;
 
