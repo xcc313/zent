@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { DatePicker, MonthPicker, DateRangePicker } from '../src';
 import '../assets/reset.scss';
 import '../assets/index.scss';
-import '@youzan/zent-icon/lib/index.css';
+import 'zent-icon/lib/index.css';
 
 export default class Simple extends Component {
   constructor(props) {
     super(props);
     this.state = {
       logs: [],
-      value: '2017.01.01',
+      value: new Date(),
       range: ['2017.01.01', '2017.06.01']
     };
   }
@@ -111,10 +111,17 @@ export default class Simple extends Component {
         />
         <br /><br />
         <DateRangePicker
+          disabledDate={this.state.range}
+          onChange={this.onChangeRange}
+        />
+        <br />
+        <br />
+        <DateRangePicker
           showTime
           disabledDate={this.state.range}
           disabledTime={this.isDisabledRangeTime}
-          onChange={this.onChangeRange} />
+          onChange={this.onChangeRange}
+        />
         <ul>
           {logList}
         </ul>

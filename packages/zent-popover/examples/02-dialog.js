@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import Dialog from '@youzan/zent-dialog';
-import Button from '@youzan/zent-button';
+import Dialog from 'zent-dialog';
+import Button from 'zent-button';
 
 import Popover from '../src';
 
-import '@youzan/zent-button/lib/index.css';
-import '@youzan/zent-dialog/lib/index.css';
+import 'zent-button/lib/index.css';
+import 'zent-dialog/lib/index.css';
 import '../assets/index.scss';
 import '../assets/01-simple.scss';
 
@@ -44,7 +44,7 @@ export default class DialogDemo extends Component {
           <div>
             <p>dialog content</p>
 
-            <Popover position={Popover.Position.TopCenter}>
+            <Popover position={Popover.Position.TopCenter} cushion={5}>
               <Popover.Trigger.Click>
                 <Button>click me</Button>
               </Popover.Trigger.Click>

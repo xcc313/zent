@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import throttle from 'lodash/throttle';
+import throttle from 'zent-utils/lodash/throttle';
 import helper from '../helper';
-import Checkbox from '@youzan/zent-checkbox';
+import Checkbox from 'zent-checkbox';
 
 let rect;
 let relativeTop;
@@ -18,13 +18,17 @@ const Head = React.createClass({
 
   componentDidMount() {
     if (this.props.autoStick) {
-      let self = this;
+      this.throttleSetHeadStyle = throttle(this.setHeadStyle, 100, { leading: true });
 
-      window.addEventListener('scroll', throttle(self.setHeadStyle, 50));
-      window.addEventListener('resize', throttle(self.setHeadStyle, 50));
+      window.addEventListener('scroll', this.throttleSetHeadStyle, true);
+      window.addEventListener('resize', this.throttleSetHeadStyle, true);
+    }
+  },
 
-      this.getRect();
-      self.setHeadStyle();
+  componentWillUnmount() {
+    if (this.props.autoStick) {
+      window.removeEventListener('scroll', this.throttleSetHeadStyle, true);
+      window.removeEventListener('resize', this.throttleSetHeadStyle, true);
     }
   },
 
@@ -118,13 +122,19 @@ const Head = React.createClass({
 
           width = helper.getCalculatedWidth(item.width);
 
+          let styleObj = {};
+          if (width) {
+            styleObj = {
+              width,
+              flex: '0 1 auto'
+            };
+          }
+
           return (
             <div
               key={index}
               className={cellClass}
-              style={{
-                flexBasis: width
-              }}
+              style={styleObj}
             >
                 {
                   index === 0 && needSelect && (

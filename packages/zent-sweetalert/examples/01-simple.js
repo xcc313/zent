@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Sweetalert from '../src';
 
 import '../assets/index.scss';
-import '@youzan/zent-dialog/lib/index.css';
-import '@youzan/zent-button/lib/index.css';
+import 'zent-dialog/lib/index.css';
+import 'zent-button/lib/index.css';
 
 /* 快捷使用弹窗组件 */
 export default class Example extends Component {
@@ -17,6 +17,7 @@ export default class Example extends Component {
 
   showAlertInfo = () => {
     Sweetalert.alert({
+      style: { width: '300px' },
       content: '这个是具体内容',
       title: '这是一个消息标题',
       onConfirm: this.onConfirm

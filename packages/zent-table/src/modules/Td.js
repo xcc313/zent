@@ -1,6 +1,6 @@
 import React from 'react';
 import helper from '../helper';
-import Checkbox from '@youzan/zent-checkbox';
+import Checkbox from 'zent-checkbox';
 
 const Td = React.createClass({
 
@@ -55,8 +55,16 @@ const Td = React.createClass({
       className += ' cell--money';
     }
 
+    let styleObj = {};
+    if (width) {
+      styleObj = {
+        width,
+        flex: '0 1 auto'
+      };
+    }
+
     return (
-      <div className={className} style={{ flexBasis: width }}>
+      <div className={className} style={styleObj}>
         {
           needSelect && (
             <Checkbox

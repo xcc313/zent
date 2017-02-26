@@ -1,4 +1,7 @@
+/* FIXME: these two values couples with ARROW_OFFSET in postion.js */
 $arrow-offset: 14px;
+$arrow-size: 6px;
+
 $arrow-cover-size: 11px;
 
 .zent-pop {
@@ -29,14 +32,15 @@ $arrow-cover-size: 11px;
     .zent-pop-buttons {
         min-width: 160px;
         text-align: right;
-        margin-right: -10px;
+        margin-right: 0;
+        margin-top: 10px;
     }
 
     .zent-pop-arrow {
         position: absolute;
         z-index: 1;
-        width: 6px;
-        height: 6px;
+        width: $arrow-size;
+        height: $arrow-size;
         background: #fff;
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
         overflow: hidden;
