@@ -50,10 +50,10 @@ class Example extends Component {
         </Select>
         <button type="button" onClick={this.getSelectData}>提交</button>
         <button type="button" onClick={this.resetSelectData}>清空</button>
-        <button type="button" onClick={this.selectIndex(1)}>第一项</button>
-        <button type="button" onClick={this.selectIndex(2)}>第二项</button>
-        <button type="button" onClick={this.selectIndex(3)}>第三项</button>
-        <button type="button" onClick={this.selectIndex(4)}>第四项</button>
+        <button type="button" onClick={this.selectIndex(0)}>第一项</button>
+        <button type="button" onClick={this.selectIndex(1)}>第二项</button>
+        <button type="button" onClick={this.selectIndex(2)}>第三项</button>
+        <button type="button" onClick={this.selectIndex(3)}>第四项</button>
       </form>
     );
   }
