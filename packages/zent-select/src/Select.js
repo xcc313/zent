@@ -7,6 +7,7 @@ import assign from 'zent-utils/lodash/assign';
 import omit from 'zent-utils/lodash/omit';
 import cloneDeep from 'zent-utils/lodash/cloneDeep';
 import isEqual from 'zent-utils/lodash/isEqual';
+import isArray from 'zent-utils/lodash/isArray';
 import Trigger from './triggers/Index';
 import Popup from './Popup';
 import SimpleTrigger from './triggers/SimpleTrigger';
@@ -16,10 +17,6 @@ import TagsTrigger from './triggers/TagsTrigger';
 import { KEY_ESC, KEY_EN, KEY_UP, KEY_DOWN } from './constants';
 
 const noop = () => void 0;
-
-const isArray = function (o) {
-  return Object.prototype.toString.apply(o) === '[object Array]';
-};
 
 class Select extends Component {
 
@@ -85,30 +82,30 @@ class Select extends Component {
   componentWillReceiveProps(nextProps) {
     // 重置组件data
     let nextState = assign({}, nextProps);
-    let that = this;
     if (nextProps.data === this.state.data
       && nextProps.value === this.state.value
       && nextProps.index === this.state.index
     ) return;
-    if (`${nextProps.value}` || `${nextProps.index}`) {
-      this.state.selectedItem = this.props.selectedItem;
-      this.formateData(nextProps.data, nextProps);
-    }
     if (isArray(nextProps.value)) {
-      that.state.selectedItems = [];
+      this.state.selectedItems = [];
       this.sourceData.forEach(item => {
         if (nextProps.value.indexOf(item.value) > -1) {
-          that.state.selectedItems.push(item);
+          this.state.selectedItems.push(item);
         }
       });
+    } else if (`${nextProps.value}` || `${nextProps.index}`) {
+      this.state.selectedItem = this.props.selectedItem;
     }
+    this.formateData(nextProps.data, nextProps);
     nextState.selectedItem = this.state.selectedItem;
     nextState.selectedItems = this.state.selectedItems;
     this.setState(nextState);
   }
 
   // 对data进行处理，增加cid
-  formateData(data = this.sourceData, props = this.props) {
+  formateData(data, props) {
+    data = data || this.sourceData;
+    props = props || this.props;
     let that = this;
     this.sourceData = cloneDeep(data).map((item) => {
       let result = {};
@@ -134,6 +131,7 @@ class Select extends Component {
 
       return item;
     });
+    return this.sourceData;
   }
 
   // 接收trigger改变后的数据，将数据传给popup
@@ -151,14 +149,32 @@ class Select extends Component {
   // 将被选中的option的数据传给trigger
   optionChangedHandler(ev, selectedItem) {
     let result = {};
+    const {
+      onEmptySelected,
+      optionValue,
+      optionText,
+      tags,
+      onChange
+    } = this.props;
+    let { selectedItems, value = [] } = this.state;
     if (!selectedItem) {
-      this.props.onEmptySelected(ev);
+      onEmptySelected(ev);
       return;
     }
     let args = omit(selectedItem, ['cid']);
-    result[this.props.optionValue] = selectedItem.value;
-    result[this.props.optionText] = selectedItem.text;
-    this.props.onChange(ev, assign(args, result));
+    result[optionValue] = selectedItem.value;
+    result[optionText] = selectedItem.text;
+    let data = assign(args, result);
+    if (tags) {
+      if (value.indexOf(selectedItem.value) < 0) {
+        value.push(selectedItem.value);
+        selectedItems.push(selectedItem);
+      }
+      data = assign(data, {
+        value
+      });
+    }
+    onChange(ev, data);
     this.setState({
       selectedItem,
       open: this.focus
