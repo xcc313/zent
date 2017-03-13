@@ -19,24 +19,10 @@ class Example extends Component {
     super(props);
 
     this.state = Object.assign({}, props);
-    this.changeHandler = this.changeHandler.bind(this);
-    this.deleteHandler = this.deleteHandler.bind(this);
     this.filterHandler = this.filterHandler.bind(this);
     this.asyncFilterHandler = this.asyncFilterHandler.bind(this);
     this.getSelectData = this.getSelectData.bind(this);
     this.resetSelectData = this.resetSelectData.bind(this);
-  }
-
-  changeHandler(ev, data) {
-    if (this.state.value.indexOf(data.value) < 0) {
-      this.state.value.push(data.value);
-    }
-  }
-
-  deleteHandler(data) {
-    let { value } = this.state;
-    value = value.filter(item => item !== data.value);
-    this.setState({ value });
   }
 
   filterHandler(item, keyword) {
@@ -50,7 +36,7 @@ class Example extends Component {
   }
 
   getSelectData() {
-    let { value } = this.state;
+    let { value } = this.select.state;
     alert(value ? `你选择了 ${value}` : '请选择一种分类'); // eslint-disable-line
   }
 
@@ -65,7 +51,7 @@ class Example extends Component {
 
     return (
       <form>
-        <Select data={optionData} value={value} tags onChange={this.changeHandler} onDelete={this.deleteHandler} filter={this.filterHandler} onAsyncFilter={this.asyncFilterHandler} />
+        <Select data={optionData} value={value} tags filter={this.filterHandler} onAsyncFilter={this.asyncFilterHandler} ref={select => this.select = select} />
         <div>
           <button type="button" onClick={this.getSelectData}>提交</button>
           <button type="button" onClick={this.resetSelectData}>清空</button>

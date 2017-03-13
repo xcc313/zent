@@ -19,7 +19,7 @@ class Example extends Component {
   }
 
   getSelectData() {
-    let { value } = this.state;
+    let { value } = this.select.state;
     alert(value ? `你选择了 ${value}` : '请选择一种分类'); // eslint-disable-line
   }
 
@@ -32,6 +32,7 @@ class Example extends Component {
   selectIndex(index) {
     return () => {
       this.setState({
+        value: '',
         index
       });
     };
@@ -42,7 +43,7 @@ class Example extends Component {
 
     return (
       <form>
-        <Select index={index} value={value} onChange={this.changeHandler} placeholder="选择商品分组">
+        <Select index={index} value={value} onChange={this.changeHandler} placeholder="选择商品分组" ref={select => this.select = select}>
           <Option value="1" xxx="12">养生食品分类</Option>
           <Option value="2">休闲食品分类</Option>
           <Option value="3">药效性食物分类</Option>

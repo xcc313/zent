@@ -99,7 +99,7 @@ class Select extends Component {
     this.formateData(nextProps.data, nextProps);
     nextState.selectedItem = this.state.selectedItem;
     nextState.selectedItems = this.state.selectedItems;
-    this.setState(nextState);
+    this.setState({ ...nextState, value: this.state.selectedItem.value });
   }
 
   // 对data进行处理，增加cid
@@ -143,6 +143,13 @@ class Select extends Component {
   }
 
   triggerDeleteHandler(data) {
+    let { selectedItems, value } = this.state;
+    selectedItems = selectedItems.filter(item => item.cid !== data.cid);
+    value = selectedItems.map(item => item.value);
+    this.setState({
+      selectedItems,
+      value
+    });
     this.props.onDelete(data);
   }
 
@@ -170,9 +177,6 @@ class Select extends Component {
         value.push(selectedItem.value);
         selectedItems.push(selectedItem);
       }
-      data = assign(data, {
-        value
-      });
     }
     onChange(ev, data);
     this.setState({
