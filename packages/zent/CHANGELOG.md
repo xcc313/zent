@@ -1,7 +1,69 @@
 ## 更新日志
 
+## [zent@3.4.0](https://github.com/youzan/zent/tree/zent@3.4.0) (2017-07-05)
+[Full Changelog](https://github.com/youzan/zent/compare/zent@3.3.3...zent@3.4.0)
+
+**不兼容改动和新功能:**
+
+- cascader: support async data loading [\#318](https://github.com/youzan/zent/issues/318)
+- table: 支持底部悬浮操作区域 [\#295](https://github.com/youzan/zent/issues/295)
+- New component: image preview [\#357](https://github.com/youzan/zent/pull/357) ([ronghang](https://github.com/ronghang))
+- form: add options to trigger validation on focus/blur/change [\#356](https://github.com/youzan/zent/pull/356) ([w91](https://github.com/w91))
+
+**Bug 修复:**
+
+- table: pageInfo 和 Pagination 的字段名不一致 [\#321](https://github.com/youzan/zent/issues/321)
+- Fix es6 methods [\#360](https://github.com/youzan/zent/pull/360) ([cpylua](https://github.com/cpylua))
+
+**处理的 Issue:**
+
+- doc: table 的 onchange 回调里面有哪些字段 [\#332](https://github.com/youzan/zent/issues/332)
+
+**合并的 Pull Request (可能有不兼容改动):**
+
+- fix: 点击button 关闭pop [\#354](https://github.com/youzan/zent/pull/354) ([ronghang](https://github.com/ronghang))
+- remove un use pack [\#349](https://github.com/youzan/zent/pull/349) ([linxixuan](https://github.com/linxixuan))
+- 支持批量处理的组件自动悬浮 [\#347](https://github.com/youzan/zent/pull/347) ([linxixuan](https://github.com/linxixuan))
+- cascader support async load data and add test [\#338](https://github.com/youzan/zent/pull/338) ([liaoyu](https://github.com/liaoyu))
+
+## [zent@3.3.3](https://github.com/youzan/zent/tree/zent@3.3.3) (2017-06-26)
+[Full Changelog](https://github.com/youzan/zent/compare/zent@3.3.2...zent@3.3.3)
+
+**不兼容改动和新功能:**
+
+- tag: support custom colors [\#343](https://github.com/youzan/zent/pull/343) ([fairyaierl](https://github.com/fairyaierl))
+- Add search-input [\#341](https://github.com/youzan/zent/pull/341) ([cpylua](https://github.com/cpylua))
+
+**Bug 修复:**
+
+- pop: hover pop 打开的时候滚动以后会出现 pop 不关闭的情况 [\#340](https://github.com/youzan/zent/issues/340)
+- DatePicker: defaultValue won't change after some related props changed [\#326](https://github.com/youzan/zent/issues/326)
+- portal: Add a count to support non sequential dialog closes [\#346](https://github.com/youzan/zent/pull/346) ([cpylua](https://github.com/cpylua))
+- popover: Add quirk mode for popover [\#342](https://github.com/youzan/zent/pull/342) ([cpylua](https://github.com/cpylua))
+
+**合并的 Pull Request (可能有不兼容改动):**
+
+- fix: colorpicker css [\#345](https://github.com/youzan/zent/pull/345) ([ronghang](https://github.com/ronghang))
+- Datepicker: fix \#326 [\#344](https://github.com/youzan/zent/pull/344) ([xuhong](https://github.com/xuhong))
+- fix: colorpicker css fix & add props type [\#329](https://github.com/youzan/zent/pull/329) ([ronghang](https://github.com/ronghang))
+
+## [zent@3.3.2](https://github.com/youzan/zent/tree/zent@3.3.2) (2017-06-22)
+[Full Changelog](https://github.com/youzan/zent/compare/zent@3.3.1...zent@3.3.2)
+
+**Bug 修复:**
+
+- Select: UI won't change after setState in onChange [\#333](https://github.com/youzan/zent/issues/333)
+- tree: dataType="plain"时data强制根据id排序 [\#323](https://github.com/youzan/zent/issues/323)
+
+**合并的 Pull Request (可能有不兼容改动):**
+
+- 规范用词 [\#339](https://github.com/youzan/zent/pull/339) ([cpylua](https://github.com/cpylua))
+- fix: Swiper typo [\#335](https://github.com/youzan/zent/pull/335) ([ArvinTung](https://github.com/ArvinTung))
+- 修复onChange里面调了setState组件重新render以后不能正确显示选中项的问题 [\#334](https://github.com/youzan/zent/pull/334) ([huangsy](https://github.com/huangsy))
+- tree: fix dataType=plain data order unstable \#323 [\#331](https://github.com/youzan/zent/pull/331) ([wangchao0502](https://github.com/wangchao0502))
+
 ## [zent@3.3.1](https://github.com/youzan/zent/tree/zent@3.3.1) (2017-06-20)
-[Full Changelog](https://github.com/youzan/zent/compare/babel-plugin-zent@1.0.1...zent@3.3.1)
+[Full Changelog](https://github.com/youzan/zent/compare/zent@3.3.0...zent@3.3.1)
 
 **Bug 修复:**
 
@@ -11,11 +73,11 @@
 
 - 修复关于change事件用bind方式造成的多引用问题 [\#325](https://github.com/youzan/zent/pull/325) ([oConnerCooper](https://github.com/oConnerCooper))
 
-## [babel-plugin-zent@1.0.1](https://github.com/youzan/zent/tree/babel-plugin-zent@1.0.1) (2017-06-16)
-[Full Changelog](https://github.com/youzan/zent/compare/zent@3.3.0...babel-plugin-zent@1.0.1)
-
 ## [zent@3.3.0](https://github.com/youzan/zent/tree/zent@3.3.0) (2017-06-16)
-[Full Changelog](https://github.com/youzan/zent/compare/zent@3.2.0...zent@3.3.0)
+[Full Changelog](https://github.com/youzan/zent/compare/babel-plugin-zent@1.0.1...zent@3.3.0)
+
+## [babel-plugin-zent@1.0.1](https://github.com/youzan/zent/tree/babel-plugin-zent@1.0.1) (2017-06-16)
+[Full Changelog](https://github.com/youzan/zent/compare/zent@3.2.0...babel-plugin-zent@1.0.1)
 
 **不兼容改动和新功能:**
 
@@ -319,7 +381,7 @@
 **合并的 Pull Request (可能有不兼容改动):**
 
 - Update picker style [\#136](https://github.com/youzan/zent/pull/136) ([xuhong](https://github.com/xuhong))
-- Tabs without panel [\#134](https://github.com/youzan/zent/pull/134) ([ohmygod12121212](https://github.com/ohmygod12121212))
+- Tabs without panel [\#134](https://github.com/youzan/zent/pull/134) ([hzjzx](https://github.com/hzjzx))
 - Doc site [\#133](https://github.com/youzan/zent/pull/133) ([cookfront](https://github.com/cookfront))
 - Hotfix/select warning 0329 [\#131](https://github.com/youzan/zent/pull/131) ([huangsy](https://github.com/huangsy))
 - 使component属性支持更多类型 [\#128](https://github.com/youzan/zent/pull/128) ([NinoFocus](https://github.com/NinoFocus))
