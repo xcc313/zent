@@ -44,7 +44,7 @@ const columns = [{
   title: '库存',
   name: 'stock_num',
   width: '100px',
-	isMoney: true,
+  isMoney: true,
   isMoney: true
 }, {
   width: '3em',
@@ -55,7 +55,7 @@ const columns = [{
 ReactDOM.render(
     <Table
       columns={columns}
-			pageInfo={null}
+      pageInfo={null}
       datasets={datasets}
       rowKey="item_id"
     />
@@ -383,12 +383,12 @@ class Selection extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-			page: {
-				pageSize: 3,
-				current: 0,
-				totalItem: 6,
-			},
-			datasets: datasets,
+      page: {
+        pageSize: 3,
+        current: 0,
+        totalItem: 6,
+      },
+      datasets: datasets,
       selectedRowKeys: [],
     };
   }
@@ -406,16 +406,16 @@ class Selection extends React.Component {
     };
   }
 
-	onChange(conf) {
-		this.setState({
-			page: {
-				pageSize: 3,
-				current: conf.current,
-				totalItem: 6
-			},
-			datasets: conf.current === 1 ? datasets : datasets2
-		})
-	}
+  onChange(conf) {
+    this.setState({
+      page: {
+        pageSize: 3,
+        current: conf.current,
+        totalItem: 6
+      },
+      datasets: conf.current === 1 ? datasets : datasets2
+    })
+  }
 
   render() {
     let self = this;
@@ -426,11 +426,11 @@ class Selection extends React.Component {
         datasets={this.state.datasets}
         rowKey="item_id"
         getRowConf={this.getRowConf}
-				pageInfo={this.state.page}
-				onChange={(conf) => { this.onChange(conf); }}
+        pageInfo={this.state.page}
+        onChange={(conf) => { this.onChange(conf); }}
         selection={{
           selectedRowKeys: this.state.selectedRowKeys,
-					needCrossPage: true,
+          needCrossPage: true,
           onSelect: (selectedRowkeys, selectedRows, currentRow) => {
             self.onSelect(selectedRowkeys, selectedRows, currentRow);
           }
@@ -725,7 +725,7 @@ class BatchCompsClass extends React.Component {
           batchComponents={[
           <span key="pure" className="child-comps">这是一个DOM</span>,
           (data) => {
-						console.log(data);
+            console.log(data);
             return <span key="func" className="child-comps" style={{color: "blueviolet"}}> 这是一个函数，选中了{data.length}个元素    </span>
           },
           Customer
@@ -797,9 +797,9 @@ onChange会抛出一个对象，这个对象包含分页变化和排序的的参
 
 ```js
 {
-	sortBy, // {String} 表示基于什么key进行排序
-	sortType, // {String} ['asc', 'desc'] 排序的方式
-	current, // {Number} 表示当前第几行
+  sortBy, // {String} 表示基于什么key进行排序
+  sortType, // {String} ['asc', 'desc'] 排序的方式
+  current, // {Number} 表示当前第几行
 }
 ```
 
