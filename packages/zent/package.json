@@ -1,6 +1,6 @@
 {
   "name": "zent",
-  "version": "3.5.0-beta5",
+  "version": "3.5.0-beta6",
   "description": "一套前端设计语言和基于React的实现",
   "bugs": "https://github.com/youzan/zent/issues",
   "repository": {
@@ -13,6 +13,7 @@
     "build": "./scripts/build.sh",
     "prepublish": "yarn build"
   },
+  "typings": "typings/index.d.ts",
   "author": "Youzan FE",
   "license": "MIT",
   "files": [
