@@ -38,6 +38,16 @@ class Simple extends React.Component {
     }
 
     render() {
+        Upload.open({
+            title: '我的图片',
+            group: [{
+                tab: '我的图片',
+                components: ['materials']
+            }, {
+                tab: '上传文件',
+                components: ['network', 'local']
+            }]
+        });
         return (
             <div>
                 <Upload

@@ -1,3 +1,3 @@
-import Upload from './Upload';
+import Upload from './new/Upload';
 
 export default Upload;
